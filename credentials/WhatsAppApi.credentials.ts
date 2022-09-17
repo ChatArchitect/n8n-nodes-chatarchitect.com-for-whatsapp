@@ -2,7 +2,7 @@ import {IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProp
 
 export class WhatsAppApi implements ICredentialType {
 	name = 'whatsAppApi';
-	displayName = 'WhatsApp Api';
+	displayName = 'WhatsApp Api API';
 	documentationUrl = 'whatsapp';
 	properties: INodeProperties[] = [
 		{
@@ -17,6 +17,9 @@ export class WhatsAppApi implements ICredentialType {
 			displayName: 'APP SECRET',
 			name: 'appSecret',
 			type: 'string',
+			typeOptions: {
+				password: true,
+			},
 			default: '',
 			description:
 				"Chat with the <a href='https://www.chatarchitect.com/whatsapp/'>https://www.chatarchitect.com/whatsapp/</a> to obtain the APP SECRET",
@@ -25,13 +28,13 @@ export class WhatsAppApi implements ICredentialType {
 		// ----------------------------------
 		//         message:infoWhatsappAccount
 		// ----------------------------------
-		{
-			displayName: "",
+		/* {
+			displayName: "<h3>n8n-nodes-chatarchitect.com-for-whatsapp</h3> <hr><br>The application integrates the official WhatsApp Business API into your N. Incoming and outgoing messages, also you can initiate a conversation. The cost of WhatsApp Business API starts from €15 per month, for more details visit the website https://www.chatarchitect.com/whatsapp/",
 			name: 'infoWA',
 			type: 'notice',
 			default: '',
 
-		},
+		}, */
 	];
 
 	test: ICredentialTestRequest = {

@@ -330,7 +330,7 @@ export class WhatsApp implements INodeType {
 			//         message:infoSMessage
 			// ----------------------------------
 			{
-				displayName: '<h3>Send a Text</h3> <hr><br>Send a text message with ChatArchitect.com for WhatsApp <br>Destination - WhatsApp number in the international format <br>Outputs: msg.payload with request results.',
+				displayName: '<h3>Send a Text</h3> <hr><br>Send a text message with ChatArchitect.com for WhatsApp <br>Destination - WhatsApp number in the international format <br>Outputs: body with request results.',
 				name: 'infoSMessage',
 				type: 'notice',
 				default: '',
@@ -346,7 +346,7 @@ export class WhatsApp implements INodeType {
 			//         message:infoSImage
 			// ----------------------------------
 			{
-				displayName: '<h3>Send an Image</h3> <hr><br>Send an image with <a href=\'https://www.chatarchitect.com/\'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: msg.payload with request results.',
+				displayName: '<h3>Send an Image</h3> <hr><br>Send an image with <a href=\'https://www.chatarchitect.com/\'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.',
 				name: 'infoSImage',
 				type: 'notice',
 				default: '',
@@ -363,7 +363,7 @@ export class WhatsApp implements INodeType {
 			// ----------------------------------
 			{
 				displayName:
-					"<h3>Send an Audio</h3> <hr><br>Send an audio with <a href='https://www.chatarchitect.com/'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: msg.payload with request results.",
+					"<h3>Send an Audio</h3> <hr><br>Send an audio with <a href='https://www.chatarchitect.com/'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
 				name: 'infoSAudio',
 				type: 'notice',
 				default: '',
@@ -380,7 +380,7 @@ export class WhatsApp implements INodeType {
 			// ----------------------------------
 			{
 				displayName:
-					"<h3>Send a Video</h3> <hr><br>Send a video with <a href='https://www.chatarchitect.com/'>ChatArchitect.com</a> for WhatsApp<br> Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: msg.payload with request results.",
+					"<h3>Send a Video</h3> <hr><br>Send a video with <a href='https://www.chatarchitect.com/'>ChatArchitect.com</a> for WhatsApp<br> Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
 				name: 'infoSVideo',
 				type: 'notice',
 				default: '',
@@ -396,7 +396,7 @@ export class WhatsApp implements INodeType {
 			//         message:infoSDocument
 			// ----------------------------------
 			{
-				displayName: '<h3>Send a Document</h3> <hr><br>Send a document with <a href=\'https://www.chatarchitect.com/\'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: msg.payload with request results.',
+				displayName: '<h3>Send a Document</h3> <hr><br>Send a document with <a href=\'https://www.chatarchitect.com/\'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.',
 				name: 'infoSDocument',
 				type: 'notice',
 				default: '',
@@ -412,14 +412,14 @@ export class WhatsApp implements INodeType {
 			//         message:infoSetWebhook
 			// ----------------------------------
 			{
-				displayName: '<h3>Send a Document</h3> <hr><br>Send a document with <a href=\'https://www.chatarchitect.com/\'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: msg.payload with request results.',
+				displayName: '<h3>Set Webhook</h3> <hr><br>One-time node to set Webhook URL. <br>To create the URL you can use the built-in “http in end-point” with POST Method. Only HTTPS is accepted. <br>Outputs: body with request results',
 				name: 'infoSetWebhook',
 				type: 'notice',
 				default: '',
 				displayOptions: {
 					show: {
 						operation: ['setWebhook'],
-						resource: ['message'],
+						resource: ['webhook'],
 					},
 				},
 			},

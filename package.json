@@ -1,9 +1,10 @@
 {
-  "name": "n8n-nodes-chatarchitect.com-for-whatsapp",
-  "version": "0.1.0",
+  "name": "@chatarchitect/n8n-nodes-chatarchitect.com-for-whatsapp",
+  "version": "0.0.1",
   "description": "The application integrates the official WhatsApp Business API into your N8N. Incoming and outgoing messages, media, buttons, also you can initiate a conversation.The cost of WhatsApp Business API starts from €15 per month, for more details visit the website https://www.chatarchitect.com/whatsapp/ 1 month free trial, to connect and receive a key, you can write to our WhatsApp https://wa.me/421233221242",
   "keywords": [
-    "n8n-community-node-package","whatsapp"
+    "n8n-community-node-package",
+    "whatsapp"
   ],
   "license": "MIT",
   "homepage": "",
@@ -30,10 +31,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-	  "dist/credentials/WhatsAppApi.credentials.js"
+      "dist/credentials/WhatsAppApi.credentials.js"
     ],
     "nodes": [
-	  "dist/nodes/WhatsApp/WhatsApp.node.js"
+      "dist/nodes/WhatsApp/WhatsApp.node.js"
     ]
   },
   "devDependencies": {
@@ -47,5 +48,8 @@
     "prettier": "^2.7.1",
     "tslint": "^6.1.2",
     "typescript": "~4.6.0"
+  },
+  "dependencies": {
+    "eslint": "^7.32.0"
   }
 }

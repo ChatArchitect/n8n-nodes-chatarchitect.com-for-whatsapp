@@ -17,7 +17,7 @@ export class WhatsApp implements INodeType {
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
 		version: 1,
-		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
+		subtitle: '={{$parameter["operation"]}}',
 		description: 'Sends data to WhatsApp',
 		defaults: {
 			name: 'WhatsApp',
@@ -31,24 +31,6 @@ export class WhatsApp implements INodeType {
 			},
 		],
 		properties: [
-			{
-				displayName: 'Resource',
-				name: 'resource',
-				type: 'options',
-				noDataExpression: true,
-				options: [
-					{
-						name: 'Message',
-						value: 'message',
-					},
-					{
-						name: 'Webhook',
-						value: 'webhook',
-					},
-				],
-				default: 'message',
-			},
-
 			// ----------------------------------
 			//         operation
 			// ----------------------------------
@@ -58,11 +40,7 @@ export class WhatsApp implements INodeType {
 				name: 'operation',
 				type: 'options',
 				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['message', 'webhook'],
-					},
-				},
+				displayOptions: {},
 				options: [
 					{
 						name: 'Send Audio',
@@ -117,7 +95,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendMessage'],
-						resource: ['message'],
 					},
 				},
 				description: 'Text of the message to be sent',
@@ -137,7 +114,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendMessage', 'sendImage', 'sendAudio', 'sendVideo', 'sendDocument'],
-						resource: ['message'],
 					},
 				},
 				description: 'Destination of the message to be sent',
@@ -157,7 +133,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendImage'],
-						resource: ['message'],
 					},
 				},
 			},
@@ -172,7 +147,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendImage'],
-						resource: ['message'],
 					},
 				},
 				description: 'Caption of the Image to be sent',
@@ -192,7 +166,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendAudio'],
-						resource: ['message'],
 					},
 				},
 				description: 'URL of the Audio to be sent',
@@ -212,7 +185,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendVideo'],
-						resource: ['message'],
 					},
 				},
 				description: 'URL of the Video to be sent',
@@ -228,7 +200,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendVideo'],
-						resource: ['message'],
 					},
 				},
 				description: 'Caption of the Video to be sent',
@@ -248,7 +219,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendDocument'],
-						resource: ['message'],
 					},
 				},
 				description: 'URL of the Document to be sent',
@@ -268,7 +238,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['whatsappAccount'],
-						resource: ['message'],
 					},
 				},
 				description: 'URL of the Document to be sent',
@@ -284,7 +253,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendDocument'],
-						resource: ['message'],
 					},
 				},
 				description: 'Caption of the Document to be sent',
@@ -300,7 +268,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendDocument'],
-						resource: ['message'],
 					},
 				},
 				description: 'File`s name of the Document to be sent',
@@ -320,7 +287,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['setWebhook'],
-						resource: ['webhook'],
 					},
 				},
 				description: 'URL of the Webhook to be set',
@@ -337,7 +303,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendMessage'],
-						resource: ['message'],
 					},
 				},
 			},
@@ -353,7 +318,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendImage'],
-						resource: ['message'],
 					},
 				},
 			},
@@ -370,7 +334,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendAudio'],
-						resource: ['message'],
 					},
 				},
 			},
@@ -387,7 +350,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendVideo'],
-						resource: ['message'],
 					},
 				},
 			},
@@ -403,7 +365,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['sendDocument'],
-						resource: ['message'],
 					},
 				},
 			},
@@ -419,7 +380,6 @@ export class WhatsApp implements INodeType {
 				displayOptions: {
 					show: {
 						operation: ['setWebhook'],
-						resource: ['webhook'],
 					},
 				},
 			},
@@ -435,81 +395,74 @@ export class WhatsApp implements INodeType {
 		let requestMethod: string;
 
 		const operation = this.getNodeParameter('operation', 0) as string;
-		const resource = this.getNodeParameter('resource', 0) as string;
 
 		for (let i = 0; i < items.length; i++) {
 			try {
-				// Reset all values
 				requestMethod = 'POST';
 				body = {
 					channel: 'whatsapp',
 				};
 
-				if (resource === 'message') {
-					//Only for resource === 'message'
-					body.destination = this.getNodeParameter('destination', i) as string;
+				body.destination = this.getNodeParameter('destination', i) as string;
 
-					if (operation === 'sendMessage') {
-						body.message = this.getNodeParameter('text', i) as string;
+				if (operation === 'sendMessage') {
+					body.message = this.getNodeParameter('text', i) as string;
 
-						body.payload = {
-							type: 'text',
-							message: body.message,
-						};
-					} else if (operation === 'sendImage') {
-						body.caption = this.getNodeParameter('captionImage', i) as string;
-						body.originalUrl = this.getNodeParameter('originalUrl', i) as string;
+					body.payload = {
+						type: 'text',
+						message: body.message,
+					};
+				} else if (operation === 'sendImage') {
+					body.caption = this.getNodeParameter('captionImage', i) as string;
+					body.originalUrl = this.getNodeParameter('originalUrl', i) as string;
 
-						body.payload = {
-							type: 'image',
-							originalUrl: body.originalUrl,
-							previewUrl: body.originalUrl,
-							caption: body.caption,
-						};
-					} else if (operation === 'sendAudio') {
-						body.url = this.getNodeParameter('urlAudio', i) as string;
+					body.payload = {
+						type: 'image',
+						originalUrl: body.originalUrl,
+						previewUrl: body.originalUrl,
+						caption: body.caption,
+					};
+				} else if (operation === 'sendAudio') {
+					body.url = this.getNodeParameter('urlAudio', i) as string;
 
-						body.payload = {
-							type: 'audio',
-							url: body.url,
-						};
-					} else if (operation === 'sendVideo') {
-						body.url = this.getNodeParameter('urlVideo', i) as string;
-						body.caption = this.getNodeParameter('captionVideo', i) as string;
+					body.payload = {
+						type: 'audio',
+						url: body.url,
+					};
+				} else if (operation === 'sendVideo') {
+					body.url = this.getNodeParameter('urlVideo', i) as string;
+					body.caption = this.getNodeParameter('captionVideo', i) as string;
 
-						body.payload = {
-							type: 'video',
-							url: body.url,
-							caption: body.caption,
-						};
-					} else if (operation === 'sendDocument') {
-						body.url = this.getNodeParameter('urlDocument', i) as string;
-						body.caption = this.getNodeParameter('captionDocument', i) as string;
-						body.filename = this.getNodeParameter('filenameDocument', i) as string;
+					body.payload = {
+						type: 'video',
+						url: body.url,
+						caption: body.caption,
+					};
+				} else if (operation === 'sendDocument') {
+					body.url = this.getNodeParameter('urlDocument', i) as string;
+					body.caption = this.getNodeParameter('captionDocument', i) as string;
+					body.filename = this.getNodeParameter('filenameDocument', i) as string;
 
-						body.payload = {
-							type: 'file',
-							url: body.url,
-							caption: body.caption,
-							filename: body.filename,
-						};
-					}
-				} else if (resource === 'webhook') {
-					if (operation === 'setWebhook') {
-						body.url = this.getNodeParameter('webhooklUrl', i) as string;
-						console.log(body.url);
-						body = {
-							channel: 'whatsapp',
-							destination: '79199699961',
-							optin: 'true',
-							webhook_separate: 'false',
-							webhook: body.url,
-							webhook_message_event: body.url,
-							webhook_user_event: body.url,
-						};
-					}
+					body.payload = {
+						type: 'file',
+						url: body.url,
+						caption: body.caption,
+						filename: body.filename,
+					};
+				} else if (operation === 'setWebhook') {
+					body.url = this.getNodeParameter('webhooklUrl', i) as string;
+
+					body = {
+						channel: 'whatsapp',
+						destination: '79199699961',
+						optin: 'true',
+						webhook_separate: 'false',
+						webhook: body.url,
+						webhook_message_event: body.url,
+						webhook_user_event: body.url,
+					};
 				} else {
-					throw new NodeOperationError(this.getNode(), `The resource "${resource}" is not known!`, {
+					throw new NodeOperationError(this.getNode(), `The operation "${operation}" is not known!`, {
 						itemIndex: i,
 					});
 				}

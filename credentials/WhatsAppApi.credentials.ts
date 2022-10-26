@@ -2,7 +2,7 @@ import {IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProp
 
 export class WhatsAppApi implements ICredentialType {
 	name = 'whatsAppApi';
-	displayName = 'WhatsApp Api API';
+	displayName = 'WhatsApp API';
 	documentationUrl = 'https://github.com/ChatArchitect/n8n-nodes-chatarchitect.com-for-whatsapp/blob/main/README.md';
 	properties: INodeProperties[] = [
 		{
@@ -24,7 +24,7 @@ export class WhatsAppApi implements ICredentialType {
 			description:
 				"Chat with the <a href='https://www.chatarchitect.com/whatsapp/'>https://www.chatarchitect.com/whatsapp/</a> to obtain the APP SECRET",
 		},
-		
+
 		// ----------------------------------
 		//         message:infoWhatsappAccount
 		// ----------------------------------

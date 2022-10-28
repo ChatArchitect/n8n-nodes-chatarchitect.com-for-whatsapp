@@ -18,6 +18,7 @@ export class SendAnImage implements INodeType {
 		name: 'sendAnImage',
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
+		documentationUrl: 'https://www.npmjs.com/package/@chatarchitect/n8n-nodes-chatarchitect.com-for-whatsapp',
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Sends data to WhatsApp',

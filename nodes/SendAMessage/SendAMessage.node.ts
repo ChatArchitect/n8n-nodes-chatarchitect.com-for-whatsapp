@@ -14,7 +14,7 @@ import { apiRequest } from '../GenericFunctions';
 
 export class SendAMessage implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'WhatsApp: Send a Message',
+		displayName: 'WhatsApp: Send a Text',
 		name: 'sendAMessage',
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
@@ -23,7 +23,7 @@ export class SendAMessage implements INodeType {
 		subtitle: '={{$parameter["operation"]}}',
 		description: 'Send a text message to WhatsApp',
 		defaults: {
-			name: 'WhatsApp: Send a Message',
+			name: 'WhatsApp: Send a Text',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
@@ -64,7 +64,7 @@ export class SendAMessage implements INodeType {
 			},
 			/*message:infoSMessage*/
 			{
-				displayName: '<h3>Send a Text</h3> <hr><br>Send a text message with <a href=\'https://www.chatarchitect.com/whatsapp/\'>https://www.chatarchitect.com/whatsapp/</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Outputs: body with request results.',
+				displayName: '<h3>Send a Text</h3> <hr><br>Send a text message with <a href=\'https://www.chatarchitect.com/whatsapp/\'>ChatArchitect.com for WhatsApp</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Outputs: body with request results.',
 				name: 'infoSMessage',
 				type: 'notice',
 				default: '',

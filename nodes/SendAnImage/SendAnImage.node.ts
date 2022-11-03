@@ -69,7 +69,7 @@ export class SendAnImage implements INodeType {
 			},
 			/*message:infoSImage*/
 			{
-				displayName: '<h3>Send an Image</h3> <hr><br>Send an image with <a href=\'https://www.chatarchitect.com/whatsapp/\'>https://www.chatarchitect.com/whatsapp/</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.',
+				displayName: '<h3>Send an Image</h3> <hr><br>Send an image with <a href=\'https://www.chatarchitect.com/whatsapp/\'>ChatArchitect.com for WhatsApp</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.',
 				name: 'infoSImage',
 				type: 'notice',
 				default: '',

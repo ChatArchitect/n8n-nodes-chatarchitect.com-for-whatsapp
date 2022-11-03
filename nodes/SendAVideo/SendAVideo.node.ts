@@ -71,7 +71,7 @@ export class SendAVideo implements INodeType {
 			/*message:infoSVideo*/
 			{
 				displayName:
-					"<h3>Send a Video</h3> <hr><br>Send a video with <a href='https://www.chatarchitect.com/whatsapp/'>https://www.chatarchitect.com/whatsapp/</a> for WhatsApp<br> Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
+					"<h3>Send a Video</h3> <hr><br>Send a video with <a href='https://www.chatarchitect.com/whatsapp/'>ChatArchitect.com for WhatsApp</a> for WhatsApp<br> Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
 				name: 'infoSVideo',
 				type: 'notice',
 				default: '',

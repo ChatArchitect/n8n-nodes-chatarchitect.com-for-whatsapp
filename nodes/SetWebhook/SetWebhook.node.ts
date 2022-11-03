@@ -14,15 +14,15 @@ import { apiRequest } from '../GenericFunctions';
 
 export class SetWebhook implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Set a Webhook',
+		displayName: 'WhatsApp: Set a Webhook',
 		name: 'setWebhook',
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Sends data to WhatsApp',
+		description: 'Action to set a WhatsApp webhook',
 		defaults: {
-			name: 'Set a Webhook',
+			name: 'WhatsApp: Set a Webhook',
 		},
 		inputs: ['main'],
 		outputs: ['main'],

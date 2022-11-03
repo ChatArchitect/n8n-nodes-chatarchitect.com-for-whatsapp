@@ -14,16 +14,16 @@ import { apiRequest } from '../GenericFunctions';
 
 export class SendAnAudio implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Send an audio',
+		displayName: 'WhatsApp: Send an Audio',
 		name: 'sendAnAudio',
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
-		documentationUrl: 'https://www.npmjs.com/package/@chatarchitect/n8n-nodes-chatarchitect.com-for-whatsapp',
+		documentationUrl: 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064',
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Sends data to WhatsApp',
+		description: 'Action to send an audio to WhatsApp',
 		defaults: {
-			name: 'Send an audio',
+			name: 'WhatsApp: Send an Audio',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
@@ -61,7 +61,7 @@ export class SendAnAudio implements INodeType {
 			/* message:infoSAudio*/
 			{
 				displayName:
-					"<h3>Send an Audio</h3> <hr><br>Send an audio with <a href='https://www.chatarchitect.com/'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
+					"<h3>Send an Audio</h3> <hr><br>Send an audio with <a href='https://www.chatarchitect.com/whatsapp/'>https://www.chatarchitect.com/whatsapp/</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
 				name: 'infoSAudio',
 				type: 'notice',
 				default: '',

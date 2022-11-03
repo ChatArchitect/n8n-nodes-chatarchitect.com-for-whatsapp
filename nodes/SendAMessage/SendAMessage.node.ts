@@ -14,16 +14,16 @@ import { apiRequest } from '../GenericFunctions';
 
 export class SendAMessage implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Send a message',
+		displayName: 'WhatsApp: Send a Message',
 		name: 'sendAMessage',
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
-		documentationUrl: 'https://www.npmjs.com/package/@chatarchitect/n8n-nodes-chatarchitect.com-for-whatsapp',
+		documentationUrl: 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064',
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Sends data to WhatsApp',
+		description: 'Send a text message to WhatsApp',
 		defaults: {
-			name: 'Send a message',
+			name: 'WhatsApp: Send a Message',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
@@ -64,7 +64,7 @@ export class SendAMessage implements INodeType {
 			},
 			/*message:infoSMessage*/
 			{
-				displayName: '<h3>Send a Text</h3> <hr><br>Send a text message with ChatArchitect.com for WhatsApp <br>Destination - WhatsApp number in the international format <br>Outputs: body with request results.',
+				displayName: '<h3>Send a Text</h3> <hr><br>Send a text message with <a href=\'https://www.chatarchitect.com/whatsapp/\'>https://www.chatarchitect.com/whatsapp/</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Outputs: body with request results.',
 				name: 'infoSMessage',
 				type: 'notice',
 				default: '',

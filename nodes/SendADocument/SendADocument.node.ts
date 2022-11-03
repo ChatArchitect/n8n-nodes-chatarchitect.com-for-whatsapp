@@ -14,16 +14,16 @@ import { apiRequest } from '../GenericFunctions';
 
 export class SendADocument implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Send a document',
+		displayName: 'WhatsApp: Send a Document',
 		name: 'sendADocument',
 		icon: 'file:whatsapp.svg',
 		group: ['output'],
-		documentationUrl: 'https://www.npmjs.com/package/@chatarchitect/n8n-nodes-chatarchitect.com-for-whatsapp',
+		documentationUrl: 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064',
 		version: 1,
 		subtitle: '={{$parameter["operation"]}}',
-		description: 'Sends data to WhatsApp',
+		description: 'Action to send a document to WhatsApp',
 		defaults: {
-			name: 'Send a document',
+			name: 'WhatsApp: Send a Document',
 		},
 		inputs: ['main'],
 		outputs: ['main'],
@@ -80,7 +80,7 @@ export class SendADocument implements INodeType {
 			},
 			/*message:infoSDocument*/
 			{
-				displayName: '<h3>Send a Document</h3> <hr><br>Send a document with <a href=\'https://www.chatarchitect.com/\'>ChatArchitect.com</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.',
+				displayName: '<h3>Send a Document</h3> <hr><br>Send a document with <a href=\'https://www.chatarchitect.com/whatsapp/\'>https://www.chatarchitect.com/whatsapp/</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.',
 				name: 'infoSDocument',
 				type: 'notice',
 				default: '',

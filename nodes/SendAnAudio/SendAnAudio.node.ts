@@ -61,7 +61,7 @@ export class SendAnAudio implements INodeType {
 			/* message:infoSAudio*/
 			{
 				displayName:
-					"<h3>Send an Audio</h3> <hr><br>Send an audio with <a href='https://www.chatarchitect.com/whatsapp/'>ChatArchitect.com for WhatsApp</a> for WhatsApp <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
+					"<h3>Send an Audio</h3> <hr><br>Send an audio with <a href='https://www.chatarchitect.com/whatsapp/'>ChatArchitect.com for WhatsApp</a> <br>Destination - WhatsApp number in the international format <br>Url - direct HTTPS file link, GET and HEAD should return http code 200 with Content-Type and Content-Length headers <br>Outputs: body with request results.",
 				name: 'infoSAudio',
 				type: 'notice',
 				default: '',

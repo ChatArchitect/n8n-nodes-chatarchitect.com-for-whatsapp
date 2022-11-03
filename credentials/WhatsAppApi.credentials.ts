@@ -3,7 +3,7 @@ import {IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProp
 export class WhatsAppApi implements ICredentialType {
 	name = 'whatsAppApi';
 	displayName = 'WhatsApp Account API';
-	documentationUrl = 'https://github.com/ChatArchitect/n8n-nodes-chatarchitect.com-for-whatsapp/blob/main/README.md';
+	documentationUrl = 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'APP ID',

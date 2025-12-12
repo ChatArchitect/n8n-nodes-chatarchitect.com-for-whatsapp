@@ -5,13 +5,11 @@ import {
 	IWebhookFunctions,
 } from 'n8n-core';
 
-import { OptionsWithUri } from 'request';
-
-import { IDataObject, NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { IDataObject, IHttpRequestOptions, NodeApiError, NodeOperationError } from 'n8n-workflow';
 
 
 /**
- * Make an API request to Telegram
+ * Make an API request to WhatsApp
  *
  * @param {IHookFunctions} this
  * @param {string} method
@@ -34,15 +32,15 @@ export async function apiRequest(
 	const buffer = Buffer.from(appId + ":" + appSecret);
 	const base64Str = buffer.toString('base64');
 
-	const options: OptionsWithUri = {
+	const options: IHttpRequestOptions = {
+		method: 'POST',
+		url: `https://api.chatarchitect.com/whatsappmessage`,
 		headers: {
 			'Content-Type': 'application/json',
-			'Authorization': 'Basic ' + base64Str,
+			Authorization: `Basic ${base64Str}`,
 		},
-		method,
-		uri: `https://api.chatarchitect.com/whatsappmessage`,
-		body,
 		json: true,
+		body: Object.keys(body).length ? body : undefined,
 	};
 
 	if (Object.keys(option).length > 0) {
@@ -54,7 +52,7 @@ export async function apiRequest(
 	}
 
 	try {
-		return await this.helpers.request!(options);
+		return await this.helpers.httpRequestWithAuthentication.call(this, 'whatsAppApi', options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}

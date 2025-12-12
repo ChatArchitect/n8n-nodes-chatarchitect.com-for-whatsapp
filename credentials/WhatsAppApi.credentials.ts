@@ -46,7 +46,7 @@ export class WhatsAppApi implements ICredentialType {
 				username: '={{$credentials.appId}}',
 				password: '={{$credentials.appSecret}}',
 			},
-			baseURL: '=https://api.chatarchitect.com',
+			baseURL: 'https://api.chatarchitect.com',
 			url: '/whatsappmessage',
 			method: 'POST',
 			body: JSON.stringify({

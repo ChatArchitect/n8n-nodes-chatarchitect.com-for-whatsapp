@@ -96,10 +96,10 @@ export class SendAnAudio implements INodeType {
 
 				responseData = await apiRequest.call(this, requestMethod, body);
 
-				returnData.push({ json: responseData });
+				returnData.push({ json: responseData, pairedItem: { item: i } });
 			} catch (error) {
 				if (this.continueOnFail()) {
-					returnData.push({ json: { error: error.message } });
+					returnData.push({ json: { error: error.message }, pairedItem: { item: i } });
 					continue;
 				}
 				throw error;

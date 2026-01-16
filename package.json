@@ -54,11 +54,13 @@
     "@typescript-eslint/parser": "^5.29.0",
     "eslint-plugin-n8n-nodes-base": "^1.5.4",
     "gulp": "^4.0.2",
-    "n8n-core": "^0.125.0",
-    "n8n-workflow": "^0.107.0",
     "prettier": "^2.7.1",
     "tslint": "^6.1.2",
     "typescript": "^4.6.4",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "@n8n/node-cli": "^0.17.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
   }
 }

@@ -29,7 +29,7 @@ export class SendAnImage implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'whatsAppApi',
+				name: 'chatArchitectWhatsAppApi',
 				required: true,
 			},
 		],

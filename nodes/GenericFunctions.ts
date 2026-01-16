@@ -24,7 +24,7 @@ export async function apiRequest(
 	option: IDataObject = {},
 	// tslint:disable-next-line:no-any
 ): Promise<any> {
-	const credentials = await this.getCredentials('whatsAppApi') as IDataObject;
+	const credentials = await this.getCredentials('chatArchitectWhatsAppApi') as IDataObject;
 
 	const appId = credentials.appId;
 	const appSecret = credentials.appSecret;
@@ -52,7 +52,7 @@ export async function apiRequest(
 	}
 
 	try {
-		return await this.helpers.httpRequestWithAuthentication.call(this, 'whatsAppApi', options);
+		return await this.helpers.httpRequestWithAuthentication.call(this, 'chatArchitectWhatsAppApi', options);
 	} catch (error) {
 		throw new NodeApiError(this.getNode(), error);
 	}

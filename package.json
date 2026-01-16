@@ -36,7 +36,7 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/WhatsAppApi.credentials.js"
+      "dist/credentials/ChatArchitectWhatsAppApi.credentials.js"
     ],
     "nodes": [
       "dist/nodes/SendAMessage/SendAMessage.node.js",

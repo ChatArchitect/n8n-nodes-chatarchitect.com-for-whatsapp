@@ -29,7 +29,7 @@ export class SendAnAudio implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'whatsAppApi',
+				name: 'chatArchitectWhatsAppApi',
 				required: true,
 			},
 		],

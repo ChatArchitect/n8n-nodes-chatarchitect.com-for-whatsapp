@@ -29,7 +29,7 @@ export class SendAVideo implements INodeType {
 		outputs: ['main'],
 		credentials: [
 			{
-				name: 'whatsAppApi',
+				name: 'chatArchitectWhatsAppApi',
 				required: true,
 			},
 		],

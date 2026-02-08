@@ -1,11 +1,14 @@
-import {
+import type {
+	IDataObject,
 	IExecuteFunctions,
 	IHookFunctions,
+	IHttpRequestMethods,
+	IHttpRequestOptions,
 	ILoadOptionsFunctions,
 	IWebhookFunctions,
-} from 'n8n-core';
+} from 'n8n-workflow';
 
-import { IDataObject, IHttpRequestOptions, NodeApiError, NodeOperationError } from 'n8n-workflow';
+import { NodeApiError, NodeOperationError } from 'n8n-workflow';
 
 
 /**
@@ -18,43 +21,31 @@ import { IDataObject, IHttpRequestOptions, NodeApiError, NodeOperationError } fr
  * @returns {Promise<any>}
  */
 export async function apiRequest(
-	this: IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions | IWebhookFunctions,
-	method: string,
-	body: IDataObject,
-	option: IDataObject = {},
-	// tslint:disable-next-line:no-any
-): Promise<any> {
-	const credentials = await this.getCredentials('chatArchitectWhatsAppApi') as IDataObject;
-
-	const appId = credentials.appId;
-	const appSecret = credentials.appSecret;
-
-	const buffer = Buffer.from(appId + ":" + appSecret);
-	const base64Str = buffer.toString('base64');
+	this: IExecuteFunctions | IHookFunctions | ILoadOptionsFunctions | IWebhookFunctions,
+	method: IHttpRequestMethods,
+	body: IDataObject = {},
+	query: IDataObject = {},
+	uri?: string,
+) {
+	const credentials = await this.getCredentials('chatArchitectWhatsAppApi');
 
 	const options: IHttpRequestOptions = {
-		method: 'POST',
-		url: `https://api.chatarchitect.com/whatsappmessage`,
-		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Basic ${base64Str}`,
-		},
+		method,
+		body,
+		qs: query,
+		url: uri ?? `https://api.chatarchitect.com/whatsapp`,
 		json: true,
-		body: Object.keys(body).length ? body : undefined,
+		headers: {
+			Authorization: `Bearer ${credentials.apiKey}`,
+		},
 	};
 
-	if (Object.keys(option).length > 0) {
-		Object.assign(options, option);
-	}
-
-	if (Object.keys(body).length === 0) {
-		delete options.body;
-	}
-
 	try {
-		return await this.helpers.httpRequestWithAuthentication.call(this, 'chatArchitectWhatsAppApi', options);
+		// @ts-ignore
+		return await this.helpers.httpRequest(options);
 	} catch (error) {
-		throw new NodeApiError(this.getNode(), error);
+		if (error instanceof NodeApiError) throw error;
+		throw new NodeOperationError(this.getNode(), error as Error);
 	}
 }
 

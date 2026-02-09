@@ -27,22 +27,16 @@ export async function apiRequest(
 	query: IDataObject = {},
 	uri?: string,
 ) {
-	const credentials = await this.getCredentials('chatArchitectWhatsAppApi');
-
 	const options: IHttpRequestOptions = {
 		method,
 		body,
 		qs: query,
-		url: uri ?? `https://api.chatarchitect.com/whatsapp`,
+		url: uri ?? 'https://api.chatarchitect.com/whatsapp',
 		json: true,
-		headers: {
-			Authorization: `Bearer ${credentials.apiKey}`,
-		},
 	};
 
 	try {
-		// @ts-ignore
-		return await this.helpers.httpRequest(options);
+		return await this.helpers.httpRequestWithAuthentication.call(this, 'chatArchitectWhatsAppApi', options);
 	} catch (error) {
 		if (error instanceof NodeApiError) throw error;
 		throw new NodeOperationError(this.getNode(), error as Error);

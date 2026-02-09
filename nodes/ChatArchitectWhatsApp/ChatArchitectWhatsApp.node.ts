@@ -7,7 +7,7 @@ import type {
 	INodeTypeDescription,
 } from 'n8n-workflow';
 
-import { NodeOperationError } from 'n8n-workflow';
+import { NodeConnectionTypes } from 'n8n-workflow';
 import { apiRequest } from '../GenericFunctions';
 
 export class ChatArchitectWhatsApp implements INodeType {
@@ -22,6 +22,7 @@ export class ChatArchitectWhatsApp implements INodeType {
 		defaults: {
 			name: 'ChatArchitect WhatsApp',
 		},
+		usableAsTool: true,
 		inputs: ['main'],
 		outputs: ['main'],
 		credentials: [

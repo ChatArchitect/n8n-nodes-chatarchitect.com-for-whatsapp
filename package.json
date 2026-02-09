@@ -1,6 +1,6 @@
 {
   "name": "@chatarchitect/n8n-nodes-chatarchitect.com-for-whatsapp",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "The application integrates the official WhatsApp Business API into your N8N. Incoming and outgoing messages, media, buttons, also you can initiate a conversation.The cost of WhatsApp Business API starts from €15 per month, for more details visit the website https://www.chatarchitect.com/whatsapp/ 1 month free trial, to connect and receive a key, you can write to our WhatsApp https://wa.me/421233221242",
   "keywords": [
     "n8n-community-node",
@@ -26,7 +26,8 @@
     "format": "prettier nodes credentials --write",
     "lint": "tslint -p tsconfig.json -c tslint.json && eslint nodes credentials package.json",
     "lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json",
+    "test": "npm run lint && npm run build"
   },
   "files": [
     "dist",
@@ -47,12 +48,12 @@
     "@types/node": "^16.11.7",
     "@types/request-promise-native": "~1.0.15",
     "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^7.32.0",
     "eslint-plugin-n8n-nodes-base": "^1.5.4",
     "gulp": "^4.0.2",
     "prettier": "^2.7.1",
     "tslint": "^6.1.2",
-    "typescript": "^5.4.5",
-    "eslint": "^7.32.0"
+    "typescript": "5.1.6"
   },
   "peerDependencies": {
     "n8n-workflow": "^2.0.0"

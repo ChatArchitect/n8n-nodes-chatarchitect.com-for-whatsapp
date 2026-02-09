@@ -1,9 +1,10 @@
-import {IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProperties} from 'n8n-workflow';
+import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class ChatArchitectWhatsAppApi implements ICredentialType {
 	name = 'chatArchitectWhatsAppApi';
 	displayName = 'WhatsApp Account API';
 	documentationUrl = 'https://support.chatarchitect.com/l_eng/knowledge_base/category/62064';
+
 	properties: INodeProperties[] = [
 		{
 			displayName: 'APP ID',
@@ -24,34 +25,29 @@ export class ChatArchitectWhatsAppApi implements ICredentialType {
 			description:
 				"Chat with the <a href='https://www.chatarchitect.com/whatsapp/'>https://www.chatarchitect.com/whatsapp/</a> to obtain the APP SECRET",
 		},
-
-		// ----------------------------------
-		//         message:infoWhatsappAccount
-		// ----------------------------------
-		/* {
-			displayName: "<h3>n8n-nodes-chatarchitect.com-for-whatsapp</h3> <hr><br>The application integrates the official WhatsApp Business API into your N. Incoming and outgoing messages, also you can initiate a conversation. The cost of WhatsApp Business API starts from €15 per month, for more details visit the website https://www.chatarchitect.com/whatsapp/",
-			name: 'infoWA',
-			type: 'notice',
-			default: '',
-
-		}, */
 	];
 
-	test: ICredentialTestRequest = {
-		request: {
-			headers: {
-				'Content-Type': 'application/json',
-			},
+	authenticate: IAuthenticateGeneric = {
+		type: 'generic',
+		properties: {
 			auth: {
 				username: '={{$credentials.appId}}',
 				password: '={{$credentials.appSecret}}',
 			},
+		},
+	};
+
+	test: ICredentialTestRequest = {
+		request: {
 			baseURL: 'https://api.chatarchitect.com',
 			url: '/whatsappmessage',
 			method: 'POST',
-			body: JSON.stringify({
-				"channel": "whatsapp",
-			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: {
+				channel: 'whatsapp',
+			},
 		},
 	};
 }
